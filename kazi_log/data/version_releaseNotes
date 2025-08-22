@@ -1,0 +1,16 @@
+{
+"4.4.1.0":"https://docs.vmware.com/en/VMware-Cloud-Foundation/4.4.1/rn/vmware-cloud-foundation-441-release-notes/index.html",
+"4.4.0.0":"https://docs.vmware.com/en/VMware-Cloud-Foundation/4.4/rn/VMware-Cloud-Foundation-44-Release-Notes.html",
+"4.3.1.1":"https://docs.vmware.com/en/VMware-Cloud-Foundation/4.3.1/rn/VMware-Cloud-Foundation-431-Release-Notes.html#4.3.1.1",
+"4.3.1.0":"https://docs.vmware.com/en/VMware-Cloud-Foundation/4.3.1/rn/VMware-Cloud-Foundation-431-Release-Notes.html",
+"4.3.0.0":"https://docs.vmware.com/en/VMware-Cloud-Foundation/4.3/rn/VMware-Cloud-Foundation-43-Release-Notes.html",
+"4.2.1.0":"https://docs.vmware.com/en/VMware-Cloud-Foundation/4.2.1/rn/VMware-Cloud-Foundation-421-Release-Notes.html",
+"4.2.0.0":"https://docs.vmware.com/en/VMware-Cloud-Foundation/4.2/rn/VMware-Cloud-Foundation-42-Release-Notes.html",
+"4.1.0.1":"https://docs.vmware.com/en/VMware-Cloud-Foundation/4.1/rn/VMware-Cloud-Foundation-41-Release-Notes.html#4.1.0.1",
+"4.1.0.0":"https://docs.vmware.com/en/VMware-Cloud-Foundation/4.1/rn/VMware-Cloud-Foundation-41-Release-Notes.html",
+"4.0.1.1":"https://docs.vmware.com/en/VMware-Cloud-Foundation/4.0.1/rn/VMware-Cloud-Foundation-401-Release-Notes.html#4.0.1.1-Release",
+"4.0.1.0":"https://docs.vmware.com/en/VMware-Cloud-Foundation/4.0.1/rn/VMware-Cloud-Foundation-401-Release-Notes.html",
+"4.0.0.0":"https://docs.vmware.com/en/VMware-Cloud-Foundation/4.0/rn/VMware-Cloud-Foundation-40-Release-Notes.html",
+"3.11.0.1":"https://docs.vmware.com/en/VMware-Cloud-Foundation/3.11/rn/VMware-Cloud-Foundation-311-Release-Notes.html#31101",
+"3.11.0.0":"https://docs.vmware.com/en/VMware-Cloud-Foundation/3.11/rn/VMware-Cloud-Foundation-311-Release-Notes.html",
+}
