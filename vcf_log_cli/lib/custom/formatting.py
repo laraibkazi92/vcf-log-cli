@@ -29,28 +29,28 @@ class FormatCodes:
     
     @staticmethod
     def title(input_string):
-        text = f"{FormatCodes.CYAN}{FormatCodes.BOLD}  {input_string.upper()}{FormatCodes.END}"
-        header=f"\n{FormatCodes.CYAN}{FormatCodes.BOLD}=================================\n{text}\n{FormatCodes.CYAN}================================={FormatCodes.END}\n"
+        text = f"[cyan][bold]  {input_string.upper()} [/cyan][/bold]"
+        header=f"[cyan][bold]\n=================================\n{text}\n=================================\n[/cyan][/bold]"
         return header
 
     @staticmethod
     def subtitle(input_string):
-        text = f"\n{FormatCodes.CYAN} -- {input_string} -- {FormatCodes.END}"
+        text = f"\n[cyan] -- {input_string} -- [/cyan]"
         return text
     
     @staticmethod
     def fail(input_string):
-        text = f"{FormatCodes.RED}{input_string}{FormatCodes.END}"
+        text = f"[red]{input_string}[/red]"
         # text = typer.style(input_string, fg=typer.colors.RED)
         return text
     
     @staticmethod
     def success(input_string):
         # text = typer.style(input_string, fg=typer.colors.GREEN)
-        text = f"{FormatCodes.GREEN}{input_string}{FormatCodes.END}"
+        text = f"[green]{input_string}[/green]"
         return text
     
     @staticmethod
     def info(input_string):
-        text = f"{FormatCodes.BLUE}{input_string}{FormatCodes.END}"
+        text = f"[blue]{input_string}[/blue]"
         return text

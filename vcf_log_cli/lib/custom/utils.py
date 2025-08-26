@@ -6,6 +6,7 @@ import glob
 from vcf_log_cli import __version__
 from rich.table import Table
 from rich import print as richprint
+from rich.console import Console
 
 from vcf_log_cli.lib.custom.formatting import FormatCodes
 
@@ -16,15 +17,17 @@ def printIntro():
     #os.system('clear')
     logger.info(f"Running vcf_log_cli {__version__}")
     print("""
- _                 _          _               
-| |               (_)        | |              
-| | __  __ _  ____ _  ______ | |  ___    __ _ 
-| |/ / / _` ||_  /| ||______|| | / _ \  / _` |
-|   < | (_| | / / | |        | || (_) || (_| |
-|_|\_\ \__,_|/___||_|        |_| \___/  \__, |
-                                         __/ |
-                                        |___/ 
-================================================""")
+┌────────────────────────────────────────────────────────────────────────────────────┐
+│                                                                                    │
+│  ██╗   ██╗ ██████╗███████╗    ██╗      ██████╗  ██████╗        ██████╗██╗     ██╗  │
+│  ██║   ██║██╔════╝██╔════╝    ██║     ██╔═══██╗██╔════╝       ██╔════╝██║     ██║  │
+│  ██║   ██║██║     █████╗█████╗██║     ██║   ██║██║  ███╗█████╗██║     ██║     ██║  │
+│  ╚██╗ ██╔╝██║     ██╔══╝╚════╝██║     ██║   ██║██║   ██║╚════╝██║     ██║     ██║  │
+│   ╚████╔╝ ╚██████╗██║         ███████╗╚██████╔╝╚██████╔╝      ╚██████╗███████╗██║  │
+│    ╚═══╝   ╚═════╝╚═╝         ╚══════╝ ╚═════╝  ╚═════╝        ╚═════╝╚══════╝╚═╝  │
+│                                                                                    │
+└────────────────────────────────────────────────────────────────────────────────────┘
+ """)
     print(f"\t\t{FormatCodes.BLUE}Version: {__version__}{FormatCodes.END}\n")
     logger.info("vcf_log_cli intro message printed")
 
@@ -45,26 +48,19 @@ def deleteExistingDB(dirName):
     
     logger.info(f"Deleting dir tree ./{dirName}")
 
-# Function to update file ownership to support - Enabling other TSEs to run vcf_log_cli if its already run, or
-# if someone else extracted the bundle
-def updateFilePermissions():
-    uid=pwd.getpwnam("svcdatamover").pw_uid
-    gid=grp.getgrnam("om_vmware_support").gr_gid
-    path='vcf_log_cli'
-    try:
-        for dirpath, dirnames, filenames in os.walk(path):
-            os.chown(dirpath, uid, gid)
-            for filename in filenames:
-                os.chown(os.path.join(dirpath, filename), uid, gid)
-        logger.info("Changing file and dir permissions to allow write operations by group.")
-    except Exception as e:
-        logger.error(f"Failed to updates permissions. Error: {e}")
-
 def writeToResultsFile(content):
     with open("vcf_log_cli/results_file.txt", 'a') as resultsWriter:
-        #for line in results:
-        resultsWriter.write('\n'.join(content))
-        #resultsWriter.write('\n')
+        # for line in results:
+        ## resultsWriter.write('\n'.join(content))
+        # resultsWriter.write('\n')
+
+        console = Console(file=resultsWriter, force_terminal=True)
+        for line in content:
+            console.print(line)
+    
+    # Debug: Log content after writing
+    logger.debug(f"Content written to file. File exists: {os.path.exists('vcf_log_cli/results_file.txt')}")
+    
     content.clear()
     return content
 

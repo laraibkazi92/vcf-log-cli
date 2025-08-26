@@ -1,13 +1,13 @@
 [tool.poetry]
 name = "vcf_log_cli"
-version = "2.0.3"
+version = "2.0.4"
 description = "vcf_log_cli"
 authors = ["Laraib Kazi <laraibkazi92@gmail.com>"]
 readme = "README.md"
 
 [tool.poetry.dependencies]
 python = "^3.9"
-typer = "^0.12.3"
+typer = "^0.16.0"
 simple-term-menu = "^1.6.4"
 tabview = "^1.4.4"
 pyyaml = "^6.0.1"

@@ -12,7 +12,7 @@ logger = logging.getLogger(__name__)
 
 from vcf_log_cli import __serviceLogs__ as serviceLogs
 from vcf_log_cli.upgradeHelperOffline import main as upgradeHelperOffline
-from vcf_log_cli.lib.custom.utils import deleteExisting,updateFilePermissions, printIntro
+from vcf_log_cli.lib.custom.utils import deleteExisting, printIntro
 from vcf_log_cli.lib.custom.formatting import FormatCodes
 from vcf_log_cli.lib.snake_cli.snake import runGame
 from vcf_log_cli.logfiles import searchLogFiles, createdotAllFiles, createdotErrorFiles
@@ -150,22 +150,20 @@ def parseLogs(errorfiles: Annotated[bool, typer.Option(help="Generates .error fi
             
            # completed = sum(task.completed for task in all_progress.tasks)
             #overall_progress.update(overall_task, completed=100)
-    
-    updateFilePermissions()
-    logger.debug("File permissions updated for all files in ./vcf_log_cli")
 
     print("\nCompleted in %s seconds." % "{:.2f}".format(time.time() - start_time))
     print("Output files available in "+os.getcwd()+"/vcf_log_cli/ \n")
     logger.info("Execution complete. Terminating ...")
-    
-@app.command()
-def upgradeHelper():
-    """
-    Runs offline version of upgradeHelper
-    """
-    printIntro()
-    upgradeHelperOffline()
-    sys.exit(0)
+
+# DEPRECATED as of 2025-08-2026    
+# @app.command()
+# def upgradeHelper():
+#     """
+#     Runs offline version of upgradeHelper
+#     """
+#     printIntro()
+#     upgradeHelperOffline()
+#     sys.exit(0)
              
 @app.command()
 def database(recreate: Annotated[bool, typer.Option(help="Scans the DB dump and re-creates the DB files and directories")] = False):

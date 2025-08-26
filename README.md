@@ -21,7 +21,7 @@
 <div align="center">
     <img src="https://img.shields.io/badge/status-stable-green"/>
     <img src="https://img.shields.io/badge/development-active-green"/> <br>
-    <img src="https://img.shields.io/badge/version-2.0.3-blue"/>
+    <img src="https://img.shields.io/badge/version-2.0.4-blue"/>
     <br>
     <br>
 </div>
@@ -45,13 +45,13 @@ There are several ways to install `vcf_log_cli` depending on your preference and
 ### Method 1: Install from wheel distribution
 Download the wheel file from the `dist` directory and install:
 ```bash
-pip install dist/vcf_log_cli-2.0.3-py3-none-any.whl
+pip install dist/vcf_log_cli-2.0.4-py3-none-any.whl
 ```
 
 ### Method 2: Install from source distribution
 Download the source distribution from the `dist` directory and install:
 ```bash
-pip install dist/vcf_log_cli-2.0.3.tar.gz
+pip install dist/vcf_log_cli-2.0.4.tar.gz
 ```
 
 ### Method 3: Install with Poetry

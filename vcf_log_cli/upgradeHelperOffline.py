@@ -1,3 +1,8 @@
+'''
+DEPRECATED as of 2025-08-2026
+Needs significant refactoring to allow functionality for VCF 5.x and VCF 9
+Until that is implemented (IF ...), this feature will be disabled
+'''
 import os
 import sys
 import json
@@ -20,17 +25,7 @@ CEND = '\033[0m'
 Offline Version of upgradeHelper to run against an SoS bundle
 '''
 def title():
-    head=f'''
-                              _     _  _     _               
-  _  _ _ __  __ _ _ _ __ _ __| |___| || |___| |_ __  ___ _ _ 
- | || | '_ \/ _` | '_/ _` / _` / -_) __ / -_) | '_ \/ -_) '_|
-  \_,_| .__/\__, |_| \__,_\__,_\___|_||_\___|_| .__/\___|_|  
-      |_|   |___/                             |_|            
-=============================================================
-                {CRED}vcf_log_cli <OFFLINE> version{CEND}
-=============================================================
-                   {CBLUE}Version: {__version__}{CEND}
-'''
+    head=f'upgradeHelper'
     print(head)
     logger.info(f'-------------- Starting upgradeHelper version: {__version__} ------------------')
       
