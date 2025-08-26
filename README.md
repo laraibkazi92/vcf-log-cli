@@ -129,28 +129,6 @@ vcf_log_cli parselogs
 vcf_log_cli parselogs --errorfiles
 ```
 
-### Command: upgradehelper
-Runs an offline version of the upgrade helper tool to analyze bundle availability and version aliasing.
-
-```bash
-vcf_log_cli upgradehelper
-```
-
-**Description:**
-This command performs several checks to assist with VCF upgrades:
-- Checks if Async Patching is enabled
-- Verifies LCM Manifest Polling status
-- Identifies SDDC Manager version
-- Lists all VCF domains for selection
-- Checks status of required upgrade bundles
-- Verifies current component versions (NSX-T, vCenter, ESXi)
-- Performs version alias detection and validation
-
-**Example Usage:**
-```bash
-vcf_log_cli upgradehelper
-```
-
 ### Command: database
 Runs a visual Database Table Navigator to explore database dumps.
 
