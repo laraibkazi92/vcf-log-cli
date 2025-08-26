@@ -1,20 +1,20 @@
 <div align="center">
 <pre>
-┌─────────────────────────────────────────────────────────────────┐
-│                                                                 │
-│   ██╗  ██╗ █████╗ ███████╗██╗      ██╗      ██████╗  ██████╗    │
-│   ██║ ██╔╝██╔══██╗╚══███╔╝██║      ██║     ██╔═══██╗██╔════╝    │
-│   █████╔╝ ███████║  ███╔╝ ██║█████╗██║     ██║   ██║██║  ███╗   │
-│   ██╔═██╗ ██╔══██║ ███╔╝  ██║╚════╝██║     ██║   ██║██║   ██║   │
-│   ██║  ██╗██║  ██║███████╗██║      ███████╗╚██████╔╝╚██████╔╝   │
-│   ╚═╝  ╚═╝╚═╝  ╚═╝╚══════╝╚═╝      ╚══════╝ ╚═════╝  ╚═════╝    │
-│                                                                 │
-└─────────────────────────────────────────────────────────────────┘
+┌────────────────────────────────────────────────────────────────────────────────────┐
+│                                                                                    │
+│  ██╗   ██╗ ██████╗███████╗    ██╗      ██████╗  ██████╗        ██████╗██╗     ██╗  │
+│  ██║   ██║██╔════╝██╔════╝    ██║     ██╔═══██╗██╔════╝       ██╔════╝██║     ██║  │
+│  ██║   ██║██║     █████╗█████╗██║     ██║   ██║██║  ███╗█████╗██║     ██║     ██║  │
+│  ╚██╗ ██╔╝██║     ██╔══╝╚════╝██║     ██║   ██║██║   ██║╚════╝██║     ██║     ██║  │
+│   ╚████╔╝ ╚██████╗██║         ███████╗╚██████╔╝╚██████╔╝      ╚██████╗███████╗██║  │
+│    ╚═══╝   ╚═════╝╚═╝         ╚══════╝ ╚═════╝  ╚═════╝        ╚═════╝╚══════╝╚═╝  │
+│                                                                                    │
+└────────────────────────────────────────────────────────────────────────────────────┘
 </pre>
 </div>
 <div align="center">
 
-<h3>CLI utility for vcf-csp to Analyze and Parse SDDC Manager SoS Log Bundles</h3>
+<h3>CLI utility for Analyze and Parse SDDC Manager SoS Log Bundles</h3>
 <br>
 </div>
 
@@ -33,14 +33,14 @@
 
 ## Details
 
-`kazi-log` for VCF is a python based log parsing tool that runs against an SOS bundle collected from SDDC Manager.
+`vcf-log-cli` for VCF is a python based log parsing tool that runs against an SOS bundle collected from SDDC Manager.
 
 With the complexity and vast scope of the information present in an SOS bundle, the objective here is to reduce some of this complexity and scope, by parsing through a lot of the information and presenting it on a smaller scale that is easier to digest.
 Additionally, the objective is to also present much of the environmental information in one place, and thereby reduce the number of TSE hours spent manually searching for the same information across multiple files.
 
 ## Installation
 
-There are several ways to install `kazi-log` depending on your preference and environment:
+There are several ways to install `vcf-log-cli` depending on your preference and environment:
 
 ### Method 1: Install from wheel distribution
 Download the wheel file from the `dist` directory and install:
@@ -87,24 +87,24 @@ uv pip install dist/kazi_log-2.0.3-py3-none-any.whl
 
 After installation, you can run the tool using:
 ```bash
-kazi-log --help
+vcf-log-cli --help
 ```
 
 
 ## Usage
 
-After installation, you can run `kazi-log` from any directory where you have an SDDC Manager SOS bundle extracted.
+After installation, you can run `vcf-log-cli` from any directory where you have an SDDC Manager SOS bundle extracted.
 
 ### General Help
 ```bash
-kazi-log --help
+vcf-log-cli --help
 ```
 
 ### Command: parselogs
 Parses SDDC Manager log files to create consolidated `.all` files and optionally `.error` files for services.
 
 ```bash
-kazi-log parselogs [OPTIONS]
+vcf-log-cli parselogs [OPTIONS]
 ```
 
 **Options:**
@@ -123,17 +123,17 @@ This command creates a `results_file.txt` and `.all` files for all services. The
 **Example Usage:**
 ```bash
 # Basic usage - creates .all files and results file
-kazi-log parselogs
+vcf-log-cli parselogs
 
 # With error file generation
-kazi-log parselogs --errorfiles
+vcf-log-cli parselogs --errorfiles
 ```
 
 ### Command: upgradehelper
 Runs an offline version of the upgrade helper tool to analyze bundle availability and version aliasing.
 
 ```bash
-kazi-log upgradehelper
+vcf-log-cli upgradehelper
 ```
 
 **Description:**
@@ -148,14 +148,14 @@ This command performs several checks to assist with VCF upgrades:
 
 **Example Usage:**
 ```bash
-kazi-log upgradehelper
+vcf-log-cli upgradehelper
 ```
 
 ### Command: database
 Runs a visual Database Table Navigator to explore database dumps.
 
 ```bash
-kazi-log database [OPTIONS]
+vcf-log-cli database [OPTIONS]
 ```
 
 **Options:**
@@ -167,17 +167,17 @@ This command parses the `postgres-db-dump` or `postgres-db-dump.gz` file and cre
 **Example Usage:**
 ```bash
 # Initial run - creates DB files and starts navigator
-kazi-log database
+vcf-log-cli database
 
 # Re-create DB files if they already exist
-kazi-log database --recreate
+vcf-log-cli database --recreate
 ```
 
 ### Command: workflow
 Collects subtask details for a given workflow ID.
 
 ```bash
-kazi-log workflow [OPTIONS]
+vcf-log-cli workflow [OPTIONS]
 ```
 
 **Options:**
@@ -191,15 +191,15 @@ This command retrieves detailed subtask information for a specific workflow ID f
 **Example Usage:**
 ```bash
 # Display workflow subtasks in terminal
-kazi-log workflow --id WORKFLOW_ID
+vcf-log-cli workflow --id WORKFLOW_ID
 
 # Generate a file with workflow subtask details
-kazi-log workflow --as-file --id WORKFLOW_ID
+vcf-log-cli workflow --as-file --id WORKFLOW_ID
 ```
 
 ## Output Files
 
-When running `kazi-log`, the following files are generated in the `kazi_log` directory:
+When running `vcf-log-cli`, the following files are generated in the `kazi_log` directory:
 - `results_file.txt`: Contains environment summary, service statuses, domain information, and recent workflows
 - `SERVICE.all`: Consolidated log files for each service (latest 10 log files)
 - `SERVICE.error`: Filtered ERROR messages for each service (when using --errorfiles flag)
