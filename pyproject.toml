@@ -1,7 +1,7 @@
 [tool.poetry]
-name = "vcf-log-cli"
+name = "vcf_log_cli"
 version = "2.0.3"
-description = "vcf-log-cli"
+description = "vcf_log_cli"
 authors = ["Laraib Kazi <laraibkazi92@gmail.com>"]
 readme = "README.md"
 
@@ -13,7 +13,7 @@ tabview = "^1.4.4"
 pyyaml = "^6.0.1"
 
 [tool.poetry.scripts]
-vcf-log-cli = "kazi_log.start:app"
+vcf_log_cli = "vcf_log_cli.start:app"
 
 [build-system]
 requires = ["poetry-core"]

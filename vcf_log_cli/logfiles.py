@@ -5,7 +5,7 @@ import io
 import logging
 logger = logging.getLogger(__name__)
 
-from kazi_log.lib.custom.signatures import FalsePositives
+from vcf_log_cli.lib.custom.signatures import FalsePositives
 
 # Function to search for the location of the log files        
 def searchLogFiles(service,jobDict,allFile_progress):
@@ -89,7 +89,7 @@ def createdotAllFiles(service,serv_filepath,file_list,jobDict,allFile_progress):
             
             # Parsing through every line of line to process revelant error message entries
             try:
-                with open(f"./kazi_log/{service}.all", "a") as allFile:
+                with open(f"./vcf_log_cli/{service}.all", "a") as allFile:
                     for line in servFile:
                         allFile.write(line)
                     allFile_progress.update(jobDict[service], advance=1)
@@ -132,7 +132,7 @@ def createdotErrorFiles(service,serv_filepath,file_list,errorJobDict,error_progr
                 logger.error(f'Unable to open file: {servFile}. '+ str(e))
             
             try:
-                with open(f'./kazi_log/{service}.error', 'a') as errorFile:
+                with open(f'./vcf_log_cli/{service}.error', 'a') as errorFile:
                     for line in servFile:
                         if (line.startswith("20")) and (" ERROR " in line):
                             if all(x not in line for x in signatures):

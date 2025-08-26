@@ -8,7 +8,7 @@ import csv
 import logging
 logger = logging.getLogger(__name__)
 
-from kazi_log.lib.custom.formatting import withLoader
+from vcf_log_cli.lib.custom.formatting import withLoader
 
 from rich.table import Table
 from rich.console import Console
@@ -45,7 +45,7 @@ ____________   _   _             _             _
     return head
 
 def display_file(tableName):
-    tablePath = os.getcwd()+"/kazi_log_db/*/"+tableName
+    tablePath = os.getcwd()+"/vcf_log_cli_db/*/"+tableName
     console = Console()
     for filepath in glob.glob(tablePath):
         with open(filepath, "r") as f:
@@ -64,7 +64,7 @@ def display_file(tableName):
             tableStr = capture.get()
             return tableStr
 
-def listDirs(directory="./kazi_log_db"):
+def listDirs(directory="./vcf_log_cli_db"):
     fileList = []
     for file in os.listdir(directory):
         if os.path.isdir(os.path.join(directory, file)):
@@ -73,7 +73,7 @@ def listDirs(directory="./kazi_log_db"):
 
 def listFiles(dirName):
     fileList = []
-    directory=f"./kazi_log_db/{dirName}"
+    directory=f"./vcf_log_cli_db/{dirName}"
     for file in os.listdir(directory):
         if os.path.isfile(os.path.join(directory, file)):
             fileList.append(file)
@@ -81,7 +81,7 @@ def listFiles(dirName):
     return fileList
 
 def printFile(tableName):
-    tablePath = os.getcwd()+"/kazi_log_db/*/"+tableName
+    tablePath = os.getcwd()+"/vcf_log_cli_db/*/"+tableName
     for filepath in glob.glob(tablePath):
         tabview.view(filepath)
 
@@ -148,17 +148,17 @@ def generateAllDbFiles():
                     # print(f'Working on Table: {table_name} | DB: {db_name}')
                     # Make the directories based on DB names
                     try:
-                        logger.info(f"Creating the 'kazi_log_db/{db_name}' directory in current working directory.")
-                        os.makedirs("kazi_log_db/"+db_name)
+                        logger.info(f"Creating the 'vcf_log_cli_db/{db_name}' directory in current working directory.")
+                        os.makedirs("vcf_log_cli_db/"+db_name)
                     except:
-                        logger.warning(f"Existing 'kazi_log_db/{db_name}' directory found ...")
+                        logger.warning(f"Existing 'vcf_log_cli_db/{db_name}' directory found ...")
                     try:    
                         while True:
                             entry = dbDump.readline()
                             if "COPY " in entry:
                                 headerList = re.findall(regex_Bracket, entry)[0].replace("(","").replace(")","").replace(",","\t")
                                 tableEntryMatrix = []
-                                tableName = "kazi_log_db/"+db_name+"/"+table_name
+                                tableName = "vcf_log_cli_db/"+db_name+"/"+table_name
                                 while True:
                                     tableEntry = dbDump.readline()
                                     if '\.' in tableEntry:

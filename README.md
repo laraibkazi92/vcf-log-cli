@@ -33,25 +33,25 @@
 
 ## Details
 
-`vcf-log-cli` for VCF is a python based log parsing tool that runs against an SOS bundle collected from SDDC Manager.
+`vcf_log_cli` for VCF is a python based log parsing tool that runs against an SOS bundle collected from SDDC Manager.
 
 With the complexity and vast scope of the information present in an SOS bundle, the objective here is to reduce some of this complexity and scope, by parsing through a lot of the information and presenting it on a smaller scale that is easier to digest.
 Additionally, the objective is to also present much of the environmental information in one place, and thereby reduce the number of TSE hours spent manually searching for the same information across multiple files.
 
 ## Installation
 
-There are several ways to install `vcf-log-cli` depending on your preference and environment:
+There are several ways to install `vcf_log_cli` depending on your preference and environment:
 
 ### Method 1: Install from wheel distribution
 Download the wheel file from the `dist` directory and install:
 ```bash
-pip install dist/kazi_log-2.0.3-py3-none-any.whl
+pip install dist/vcf_log_cli-2.0.3-py3-none-any.whl
 ```
 
 ### Method 2: Install from source distribution
 Download the source distribution from the `dist` directory and install:
 ```bash
-pip install dist/kazi_log-2.0.3.tar.gz
+pip install dist/vcf_log_cli-2.0.3.tar.gz
 ```
 
 ### Method 3: Install with Poetry
@@ -59,7 +59,7 @@ If you prefer to use Poetry for dependency management:
 ```bash
 # Clone the repository
 git clone <repository-url>
-cd vcf-log-cli
+cd vcf_log_cli
 
 # Install dependencies and package
 poetry install
@@ -74,7 +74,7 @@ pip install -e .
 ### Method 5: Install with uv (Modern Python package installer)
 If you're using uv for faster package installation:
 ```bash
-uv pip install dist/kazi_log-2.0.3-py3-none-any.whl
+uv pip install dist/vcf_log_cli-2.0.3-py3-none-any.whl
 ```
 
 ### Prerequisites
@@ -87,24 +87,24 @@ uv pip install dist/kazi_log-2.0.3-py3-none-any.whl
 
 After installation, you can run the tool using:
 ```bash
-vcf-log-cli --help
+vcf_log_cli --help
 ```
 
 
 ## Usage
 
-After installation, you can run `vcf-log-cli` from any directory where you have an SDDC Manager SOS bundle extracted.
+After installation, you can run `vcf_log_cli` from any directory where you have an SDDC Manager SOS bundle extracted.
 
 ### General Help
 ```bash
-vcf-log-cli --help
+vcf_log_cli --help
 ```
 
 ### Command: parselogs
 Parses SDDC Manager log files to create consolidated `.all` files and optionally `.error` files for services.
 
 ```bash
-vcf-log-cli parselogs [OPTIONS]
+vcf_log_cli parselogs [OPTIONS]
 ```
 
 **Options:**
@@ -123,17 +123,17 @@ This command creates a `results_file.txt` and `.all` files for all services. The
 **Example Usage:**
 ```bash
 # Basic usage - creates .all files and results file
-vcf-log-cli parselogs
+vcf_log_cli parselogs
 
 # With error file generation
-vcf-log-cli parselogs --errorfiles
+vcf_log_cli parselogs --errorfiles
 ```
 
 ### Command: upgradehelper
 Runs an offline version of the upgrade helper tool to analyze bundle availability and version aliasing.
 
 ```bash
-vcf-log-cli upgradehelper
+vcf_log_cli upgradehelper
 ```
 
 **Description:**
@@ -148,14 +148,14 @@ This command performs several checks to assist with VCF upgrades:
 
 **Example Usage:**
 ```bash
-vcf-log-cli upgradehelper
+vcf_log_cli upgradehelper
 ```
 
 ### Command: database
 Runs a visual Database Table Navigator to explore database dumps.
 
 ```bash
-vcf-log-cli database [OPTIONS]
+vcf_log_cli database [OPTIONS]
 ```
 
 **Options:**
@@ -167,17 +167,17 @@ This command parses the `postgres-db-dump` or `postgres-db-dump.gz` file and cre
 **Example Usage:**
 ```bash
 # Initial run - creates DB files and starts navigator
-vcf-log-cli database
+vcf_log_cli database
 
 # Re-create DB files if they already exist
-vcf-log-cli database --recreate
+vcf_log_cli database --recreate
 ```
 
 ### Command: workflow
 Collects subtask details for a given workflow ID.
 
 ```bash
-vcf-log-cli workflow [OPTIONS]
+vcf_log_cli workflow [OPTIONS]
 ```
 
 **Options:**
@@ -191,20 +191,20 @@ This command retrieves detailed subtask information for a specific workflow ID f
 **Example Usage:**
 ```bash
 # Display workflow subtasks in terminal
-vcf-log-cli workflow --id WORKFLOW_ID
+vcf_log_cli workflow --id WORKFLOW_ID
 
 # Generate a file with workflow subtask details
-vcf-log-cli workflow --as-file --id WORKFLOW_ID
+vcf_log_cli workflow --as-file --id WORKFLOW_ID
 ```
 
 ## Output Files
 
-When running `vcf-log-cli`, the following files are generated in the `kazi_log` directory:
+When running `vcf_log_cli`, the following files are generated in the `vcf_log_cli` directory:
 - `results_file.txt`: Contains environment summary, service statuses, domain information, and recent workflows
 - `SERVICE.all`: Consolidated log files for each service (latest 10 log files)
 - `SERVICE.error`: Filtered ERROR messages for each service (when using --errorfiles flag)
 
-When using the database command, files are generated in the `kazi_log_db` directory, organized by database name and containing tab-separated values for each table.
+When using the database command, files are generated in the `vcf_log_cli_db` directory, organized by database name and containing tab-separated values for each table.
 
 
 ## Support

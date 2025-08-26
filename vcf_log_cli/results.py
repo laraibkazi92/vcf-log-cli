@@ -6,9 +6,9 @@ import typer
 from datetime import datetime
 from pathlib import Path
 
-from kazi_log.lib.custom.formatting import FormatCodes
-from kazi_log.lib.custom.utils import writeToResultsFile, printTable
-from kazi_log.db import dbTableParser
+from vcf_log_cli.lib.custom.formatting import FormatCodes
+from vcf_log_cli.lib.custom.utils import writeToResultsFile, printTable
+from vcf_log_cli.db import dbTableParser
 
 import logging
 logger = logging.getLogger(__name__)

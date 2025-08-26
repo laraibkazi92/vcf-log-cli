@@ -3,18 +3,18 @@ import pwd
 import grp
 import glob
 
-from kazi_log import __version__
+from vcf_log_cli import __version__
 from rich.table import Table
 from rich import print as richprint
 
-from kazi_log.lib.custom.formatting import FormatCodes
+from vcf_log_cli.lib.custom.formatting import FormatCodes
 
 import logging
 logger = logging.getLogger(__name__)
 
 def printIntro():
     #os.system('clear')
-    logger.info(f"Running kazi_log {__version__}")
+    logger.info(f"Running vcf_log_cli {__version__}")
     print("""
  _                 _          _               
 | |               (_)        | |              
@@ -26,9 +26,9 @@ def printIntro():
                                         |___/ 
 ================================================""")
     print(f"\t\t{FormatCodes.BLUE}Version: {__version__}{FormatCodes.END}\n")
-    logger.info("kazi_log intro message printed")
+    logger.info("vcf_log_cli intro message printed")
 
-# Function to delete the kazi_log files and directores in the event of a re-run
+# Function to delete the vcf_log_cli files and directores in the event of a re-run
 def deleteExisting(dirName):
     dirPath = f"{os.getcwd()}/{dirName}/*"
     files = glob.glob(dirPath)
@@ -45,12 +45,12 @@ def deleteExistingDB(dirName):
     
     logger.info(f"Deleting dir tree ./{dirName}")
 
-# Function to update file ownership to support - Enabling other TSEs to run kazi_log if its already run, or
+# Function to update file ownership to support - Enabling other TSEs to run vcf_log_cli if its already run, or
 # if someone else extracted the bundle
 def updateFilePermissions():
     uid=pwd.getpwnam("svcdatamover").pw_uid
     gid=grp.getgrnam("om_vmware_support").gr_gid
-    path='kazi_log'
+    path='vcf_log_cli'
     try:
         for dirpath, dirnames, filenames in os.walk(path):
             os.chown(dirpath, uid, gid)
@@ -61,7 +61,7 @@ def updateFilePermissions():
         logger.error(f"Failed to updates permissions. Error: {e}")
 
 def writeToResultsFile(content):
-    with open("kazi_log/results_file.txt", 'a') as resultsWriter:
+    with open("vcf_log_cli/results_file.txt", 'a') as resultsWriter:
         #for line in results:
         resultsWriter.write('\n'.join(content))
         #resultsWriter.write('\n')
@@ -76,7 +76,7 @@ def printTable(tableTitle, columns, rows, file=None):
         table.add_row(*entry)
     
     if file is None:
-        with open("kazi_log/results_file.txt", 'a') as tableWriter:
+        with open("vcf_log_cli/results_file.txt", 'a') as tableWriter:
             #print('\n', file=tableWriter)
             richprint(table, file=tableWriter)
     else:

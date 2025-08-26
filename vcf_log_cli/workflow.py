@@ -1,5 +1,5 @@
-from kazi_log.db import dbTableParser
-from kazi_log.lib.custom.utils import displayTable, printTable
+from vcf_log_cli.db import dbTableParser
+from vcf_log_cli.lib.custom.utils import displayTable, printTable
 
 def workflow_taskData(wID, as_file):
     # The given workflow could be in the processing_context table

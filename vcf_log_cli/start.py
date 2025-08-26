@@ -5,20 +5,20 @@ from datetime import datetime
 import curses
 
 import logging
-logfile = 'kazi-log.log'
+logfile = 'vcf_log_cli.log'
 logging.basicConfig(filename=logfile, filemode='w', level = logging.DEBUG,
                     format='%(asctime)s [%(levelname)s]: %(message)s', datefmt= '%m-%d-%Y %I:%M:%S %p')
 logger = logging.getLogger(__name__)
 
-from kazi_log import __serviceLogs__ as serviceLogs
-from kazi_log.upgradeHelperOffline import main as upgradeHelperOffline
-from kazi_log.lib.custom.utils import deleteExisting,updateFilePermissions, printIntro
-from kazi_log.lib.custom.formatting import FormatCodes
-from kazi_log.lib.snake_cli.snake import runGame
-from kazi_log.logfiles import searchLogFiles, createdotAllFiles, createdotErrorFiles
-from kazi_log.results import resultsEnvSummary
-from kazi_log.db import generateAllDbFiles, dbNavigator
-from kazi_log.workflow import workflow_taskData
+from vcf_log_cli import __serviceLogs__ as serviceLogs
+from vcf_log_cli.upgradeHelperOffline import main as upgradeHelperOffline
+from vcf_log_cli.lib.custom.utils import deleteExisting,updateFilePermissions, printIntro
+from vcf_log_cli.lib.custom.formatting import FormatCodes
+from vcf_log_cli.lib.snake_cli.snake import runGame
+from vcf_log_cli.logfiles import searchLogFiles, createdotAllFiles, createdotErrorFiles
+from vcf_log_cli.results import resultsEnvSummary
+from vcf_log_cli.db import generateAllDbFiles, dbNavigator
+from vcf_log_cli.workflow import workflow_taskData
 
 import typer
 from click import Context
@@ -48,7 +48,7 @@ def parseLogs(errorfiles: Annotated[bool, typer.Option(help="Generates .error fi
         sys.exit(0)
         
     start_time = time.time()
-    logger.debug(f'Beginning execution of kazi-log for SDDC Manager at: {start_time}')
+    logger.debug(f'Beginning execution of vcf_log_cli for SDDC Manager at: {start_time}')
     
     printIntro()
     
@@ -57,27 +57,27 @@ def parseLogs(errorfiles: Annotated[bool, typer.Option(help="Generates .error fi
         print(f'{FormatCodes.info(" This process can take several minutes to complete.")}')
         proceed = input("\n Continue (y/n)? ")
         if proceed.lower() != 'y':
-            print("\n  Not running kazi_log...")
+            print("\n  Not running vcf_log_cli...")
             print(" .... exiting ....\n")
             logger.info("Decline to run with --errorfiles. Terminating script.")
             exit(0)
     
     # Create output directory and check for existing run
     try:
-        os.mkdir("kazi_log")
-        logger.info("Creating the 'kazi_log' directory in current working directory.")
+        os.mkdir("vcf_log_cli")
+        logger.info("Creating the 'vcf_log_cli' directory in current working directory.")
     except:
-        logger.error("Existing 'kazi_log' directory found ...")
-        rerun = input("\n Looks like kazi_log has already been run, would you like to rerun (y/n)? ")
+        logger.error("Existing 'vcf_log_cli' directory found ...")
+        rerun = input("\n Looks like vcf_log_cli has already been run, would you like to rerun (y/n)? ")
         if rerun.lower() != 'y':
-            print("\n  Not running kazi_log...")
+            print("\n  Not running vcf_log_cli...")
             print(" .... exiting ....\n")
             logger.info("Re-run not selected. Terminating script.")
             exit(0)
         try:
-            deleteExisting("kazi_log")
-            os.mkdir("kazi_log")
-            logger.info("Creating the 'kazi_log' directory in current working directory.")
+            deleteExisting("vcf_log_cli")
+            os.mkdir("vcf_log_cli")
+            logger.info("Creating the 'vcf_log_cli' directory in current working directory.")
         except Exception as e:
             logger.error(f"Unable to blank out the files. Error: {e}")
     
@@ -152,10 +152,10 @@ def parseLogs(errorfiles: Annotated[bool, typer.Option(help="Generates .error fi
             #overall_progress.update(overall_task, completed=100)
     
     updateFilePermissions()
-    logger.debug("File permissions updated for all files in ./kazi_log")
+    logger.debug("File permissions updated for all files in ./vcf_log_cli")
 
     print("\nCompleted in %s seconds." % "{:.2f}".format(time.time() - start_time))
-    print("Output files available in "+os.getcwd()+"/kazi_log/ \n")
+    print("Output files available in "+os.getcwd()+"/vcf_log_cli/ \n")
     logger.info("Execution complete. Terminating ...")
     
 @app.command()
@@ -175,22 +175,22 @@ def database(recreate: Annotated[bool, typer.Option(help="Scans the DB dump and 
     printIntro()
     
     try:
-        os.mkdir("kazi_log_db")
-        logger.info("Creating the 'kazi_log_db' directory in current working directory.")
+        os.mkdir("vcf_log_cli_db")
+        logger.info("Creating the 'vcf_log_cli_db' directory in current working directory.")
         generateAllDbFiles()
     except:
         if recreate is True:
-            logger.error("Existing 'kazi_log_db' directory found ...")
+            logger.error("Existing 'vcf_log_cli_db' directory found ...")
             rerun = input("\n Parsed Database files found, would you like to re-create them (y/n)? ")
             if rerun.lower() != 'y':
-                print("\n  Not running kazi_log...")
+                print("\n  Not running vcf_log_cli...")
                 print(" .... exiting ....\n")
                 logger.info("Re-run not selected. Terminating script.")
                 exit(0)
             # try:
-            #     deleteExistingDB("kazi_log_db")
-            #     os.mkdir("kazi_log_db")
-            #     logger.info("Creating the 'kazi_log_db' directory in current working directory.")
+            #     deleteExistingDB("vcf_log_cli_db")
+            #     os.mkdir("vcf_log_cli_db")
+            #     logger.info("Creating the 'vcf_log_cli_db' directory in current working directory.")
             # except Exception as e:
             #     logger.error(f"Unable to blank out the files. Error: {e}")
             generateAllDbFiles()

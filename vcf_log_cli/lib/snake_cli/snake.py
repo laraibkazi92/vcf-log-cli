@@ -1,6 +1,6 @@
 import os, random, json, time, threading, curses, traceback, hashlib, copy
 
-from kazi_log.lib.snake_cli import menu
+from vcf_log_cli.lib.snake_cli import menu
 
 class Game:
   def __init__(self):
