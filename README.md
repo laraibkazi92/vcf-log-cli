@@ -36,7 +36,7 @@
 `vcf_log_cli` for VCF is a python based log parsing tool that runs against an SOS bundle collected from SDDC Manager.
 
 With the complexity and vast scope of the information present in an SOS bundle, the objective here is to reduce some of this complexity and scope, by parsing through a lot of the information and presenting it on a smaller scale that is easier to digest.
-Additionally, the objective is to also present much of the environmental information in one place, and thereby reduce the number of TSE hours spent manually searching for the same information across multiple files.
+Additionally, the objective is to also present much of the environmental information in one place, and thereby reduce the number of hours spent manually searching for the same information across multiple files.
 
 ## Installation
 
@@ -80,7 +80,7 @@ uv pip install dist/vcf_log_cli-2.0.3-py3-none-any.whl
 ### Prerequisites
 - Python 3.9 or higher
 - Required dependencies will be automatically installed:
-  - typer (>=0.12.3)
+  - typer (>=0.16.0)
   - simple-term-menu (>=1.6.4)
   - tabview (>=1.4.4)
   - pyyaml (>=6.0.1)
