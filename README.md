@@ -14,7 +14,7 @@
 </div>
 <div align="center">
 
-<h3>CLI utility for Analyze and Parse SDDC Manager SoS Log Bundles</h3>
+<h3>CLI utility to Analyze and Parse SDDC Manager SoS Log Bundles</h3>
 <br>
 </div>
 
